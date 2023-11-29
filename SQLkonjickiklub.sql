@@ -1,5 +1,4 @@
-﻿
-use master;
+﻿use master;
 go
 
 drop database if exists konjickiklub;
@@ -39,7 +38,7 @@ create table posjete (
 sifra int not null primary key identity (1,1),
 datumposjete datetime,
 trener int not null,
-usluge int not null
+usluga int not null
 );
 
 create table grupa(
@@ -47,7 +46,7 @@ posjeta int not null,
 korisnik int  not null );
 
 alter table posjete add foreign key (trener) references treneri (sifra);
-alter table posjete add foreign key (usluge) references usluge (sifra);
+alter table posjete add foreign key (usluga) references usluge (sifra);
 
 alter table grupa add foreign key (posjeta) references posjete (sifra);
 alter table grupa add foreign key (korisnik) references korisnici (sifra);
@@ -80,7 +79,7 @@ insert into usluge(naziv, brojsati, cijena, potrebnoiskustvo) values
 
 select * from usluge;
 
-insert into posjete (datumposjete, trener, usluge) values
+insert into posjete (datumposjete, trener, usluga) values
 ('2023-12-03 17:00:00', 1 , 2 ),
 ('2023-12-03 17:00:00', 1 , 2),
 ('2023-12-02 17:00:00', 1 , 1),
@@ -98,11 +97,3 @@ insert into grupa(posjeta, korisnik)values
 (1,1), (1,2),(1,3),(1,4),(1,5),(1,6),(1,7),(1,8),(1,9),(1,10);
 
 select * from grupa;
-
-
-
-
-
-
-
-
